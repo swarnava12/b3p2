@@ -1,0 +1,60 @@
+<h1>Test File</h1>
+
+<form action="./one", method = "POST">
+<input type = "text" name="n">
+<input type = "submit" value = "Submit">
+</form>
+
+
+<script type="text/javascript" language="javascript" src="{{ url_for('static', filename='jquery-1.11.0.js') }}"></script>
+<script>
+    $('#search').click(function() {
+    $.ajax({
+        type: 'POST',
+        url: 'test.html',
+        data: document.getElementById('data').value.serialize(),
+        dataType:"json", //to parse string into JSON object,
+        success: function(data){
+            if(data){
+                var len = data.length;
+                var txt = "";
+                if(len > 0){
+                    for(var i=0;i<len;i++){
+                        if(data[i].city && data[i].cStatus){
+                            txt += "<tr><td>"+data[i].city+"</td><td>"+data[i].cStatus+"</td></tr>";
+                        }
+                    }
+                    if(txt != ""){
+                        $("#table").append(txt).removeClass("hidden");
+                    }
+                }
+            //}
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert('error: ' + textStatus + ': ' + errorThrown);
+        }
+    });
+    return false;//suppress natural form submission
+});
+
+function display(x){
+    y = document.getElementById('data').value;
+    document.getElementById('results').innerHTML = y;
+
+}
+document.getElementById("display").innerHTML = myFunction(2,4);
+</script>
+
+</script>
+
+<input type="button" onClick="display(10)" name="show" value="Display">
+<input type="hidden" id="data" value="{{ data }}">
+
+<div id = "results"></div>
+
+<table id="table" class="hidden">
+        <tr>
+            <th>City</th>
+            <th>Status</th>
+        </tr>
+    </table>
