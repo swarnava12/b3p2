@@ -343,7 +343,7 @@
                   <h3>SMILES: <b><span  id="smiles_container" style="color:#1f9da2"></span></b></h3>
                   <div class="row">
                         <div class="col-lg-3 col-md-6">
-                                <form action="http://127.0.0.1:5000/p1">
+                                <form action="/p1">
                                   <input type="hidden" name="smileCodes" id="smile_code">
                                   <input type="submit" name="sub" value="Predict" class="btn btn-primary">
                                 </form>
@@ -359,7 +359,7 @@
                 <div class="col-lg-6 pull-right" style="height: 100%;">
                         <p>Enter a list of SMILES here:</p>
                         <br>
-                        <form action="http://127.0.0.1:5000/p" onsubmit="getData()">
+                        <form action="/p" onsubmit="getData()">
                                 <div class="row form-group">
                                     <div class="col-lg-10"><input id="textarea" name="smileCode" class="form-control"></input></div>
                                     <input type="button" name="add" value="Add" class="btn btn-primary col-lg-2" id="addButton">
@@ -518,7 +518,6 @@
                 }
             });
             console.log(document.getElementById("all").value);
-            alert("Ckeck");
             }
         </script>
 
